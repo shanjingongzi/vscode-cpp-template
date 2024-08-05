@@ -1,0 +1,111 @@
+{
+        "version": "2.0.0" ,
+        "tasks":[
+        {
+                "label":"Generate",
+                "type":"shell",
+                "command":"cmake ",
+                "args":
+                [
+                        "-S",
+                        "${workspaceFolder}",
+                        "-B",
+                        "${workspaceFolder}/Solution",                    
+                        "-G",
+                        "Ninja",
+                        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+                ],                 
+                "options": {
+                        "cwd": "${workspaceFolder}"
+                },
+                "problemMatcher":[],
+                "presentation": {
+                        "showReuseMessage": false,
+                },
+                "group": 
+                {
+                        "kind": "build",
+                        "isDefault":true
+                }
+        }, 
+        {
+                "label":"Build",
+                "type":"shell",
+                "command":"cmake",
+                "args":
+                [
+                        "--build",
+                        "./Solution",
+                        "--",
+                        "-j12"
+                ],                 
+                "options": {
+                        "cwd": "${workspaceFolder}"
+                },
+                "problemMatcher":[],
+                "presentation": {
+                        "showReuseMessage": false,
+                },
+                "group": 
+                {
+                        "kind": "build",
+                        "isDefault":true
+                },
+                "dependsOn":[
+                       "Generate" 
+                ]
+        },
+        {
+                "label":"Install",
+                "type":"shell",
+                "command":"cmake",
+                "args":
+                [
+                        "--install",
+                        "./Solution",
+                        "--prefix",
+                        "./install",
+                        "--config",
+                        "Debug"
+                ],                 
+                "options": {
+                        "cwd": "${workspaceFolder}"
+                },
+                "problemMatcher":[],
+                "presentation": {
+                        "showReuseMessage": false,
+                },
+                "group": 
+                {
+                        "kind": "build",
+                        "isDefault":true
+                },
+                "dependsOn":[
+                       "Build" 
+                ]
+        }, 
+        {
+                "label":"Clean",
+                "type":"shell",
+                "command":"rm",
+                "args":
+                [
+                        "${workspaceFolder}/Solution",
+                        "-r",
+                        "-force"
+                ],                 
+                "options": {
+                        "cwd": "${workspaceFolder}"
+                },
+                "problemMatcher":[],
+                "presentation": {
+                        "showReuseMessage": false,
+                },
+                "group": 
+                {
+                        "kind": "build",
+                        "isDefault":true
+                }
+        } 
+        ]        
+}
