@@ -20,12 +20,10 @@
       "--enable-config",
       "-pretty",
       "--background-index",
-      "--compile-commands-dir=${workspaceFolder}/Editor/Solutions/VS2022-VC17-X64_SandModEditor",
-      "--background-index",
       "--cross-file-rename",
       "--all-scopes-completion"
 
    ],
    "C_Cpp.intelliSenseEngine": "disabled",
-   "clangd.path": "${env:USERPROFILE}\\scoop\\apps\\llvm\\current\\bin\\clangd.exe",
+   "clangd.path": "clangd",
 }

@@ -18,9 +18,14 @@
                 "options": {
                         "cwd": "${workspaceFolder}"
                 },
-                "problemMatcher":[],
+                "problemMatcher":["$gcc","$msCompile"],
                 "presentation": {
-                        "showReuseMessage": false,
+                        "echo": true,
+                        "reveal": "always",
+                        "focus": false,
+                        "panel": "shared",
+                        "showReuseMessage": true,
+                        "clear": false
                 },
                 "group": 
                 {
@@ -53,7 +58,7 @@
                 },
                 "dependsOn":[
                        "Generate" 
-                ]
+                ],
         },
         {
                 "label":"Install",
