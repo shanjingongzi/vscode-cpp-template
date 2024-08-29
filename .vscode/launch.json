@@ -8,8 +8,8 @@
             "program":"Template.exe",
             "args": [
             ],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/Build/Debug/Binaries",
+            "stopAtEntry":true,
+            "cwd": "${workspaceFolder}/build/Debug/bin",
             "environment": [],
             "preLaunchTask": "Install"
         }

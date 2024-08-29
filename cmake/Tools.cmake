@@ -33,7 +33,9 @@ function(CollectSources RESULT ALL_DIRECTORIES BASE_DIR)
         if(CURRENT_SOURCES)
             list(APPEND SRCS ${CURRENT_SOURCES})
             file(RELATIVE_PATH GROUP_NAME ${BASE_DIR} ${DIR})
-            source_group(${GROUP_NAME} FILES ${CURRENT_SOURCES})
+            if(GROUP_NAME)
+                source_group(${GROUP_NAME} FILES ${CURRENT_SOURCES})
+            endif()
         endif()
     endforeach()
     set(${RESULT} ${SRCS} PARENT_SCOPE)
@@ -45,6 +47,14 @@ install(
     TARGETS ${target}
     RUNTIME DESTINATION ${dir}
 )
+endfunction()
+
+function(InstallLibraries target dir)
+    install(
+        TARGETS ${target}
+        ARCHIVE DESTINATION ${dir}         
+        LIBRARY DESTINATION ${dir}         
+    ) 
 endfunction()
 
 function(InstallLibraries target dir)

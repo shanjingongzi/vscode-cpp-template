@@ -10,10 +10,10 @@
                         "-S",
                         "${workspaceFolder}",
                         "-B",
-                        "${workspaceFolder}/Solution",                    
+                        "${workspaceFolder}/build",                    
                         "-G",
                         "Ninja",
-                        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+                        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
                 ],                 
                 "options": {
                         "cwd": "${workspaceFolder}"
@@ -40,14 +40,31 @@
                 "args":
                 [
                         "--build",
-                        "./Solution",
+                        "./build",
                         "--",
                         "-j12"
                 ],                 
                 "options": {
                         "cwd": "${workspaceFolder}"
                 },
-                "problemMatcher":[],
+                "problemMatcher":{
+                        "owner": "cl",
+                        "fileLocation": [
+                            "search",
+                            {
+                                "include": [
+                                    "${workspaceFolder}"
+                                ],
+                                "exclude": []
+                            }
+                        ],
+                        "pattern": {
+                            "regexp": "^(.+).obj\\s:\\s(.+):\\s(.+)$",
+                            "file": 1,
+                            "location": 2,
+                            "severity": 3,
+                        }
+                },
                 "presentation": {
                         "showReuseMessage": false,
                 },
@@ -67,7 +84,7 @@
                 "args":
                 [
                         "--install",
-                        "./Solution",
+                        "./build",
                         "--prefix",
                         "./install",
                         "--config",
@@ -95,7 +112,7 @@
                 "command":"rm",
                 "args":
                 [
-                        "${workspaceFolder}/Solution",
+                        "${workspaceFolder}/build",
                         "-r",
                         "-force"
                 ],                 
