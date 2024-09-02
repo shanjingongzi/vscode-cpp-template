@@ -40,30 +40,3 @@ function(CollectSources RESULT ALL_DIRECTORIES BASE_DIR)
     endforeach()
     set(${RESULT} ${SRCS} PARENT_SCOPE)
 endfunction()
-
-
-function(InstallBinaries  target dir)
-install(
-    TARGETS ${target}
-    RUNTIME DESTINATION ${dir}
-)
-endfunction()
-
-function(InstallLibraries target dir)
-    install(
-        TARGETS ${target}
-        ARCHIVE DESTINATION ${dir}         
-        LIBRARY DESTINATION ${dir}         
-    ) 
-endfunction()
-
-function(InstallLibraries target dir)
-    install(
-        TARGETS ${target}
-        ARCHIVE DESTINATION ${dir}         
-        LIBRARY DESTINATION ${dir}         
-    ) 
-endfunction()
-
-function(InstallHeaders dir)
-endfunction()

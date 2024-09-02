@@ -1,24 +1,11 @@
 cmake_minimum_required(VERSION 3.16.0)
 
-Project(ALL_TARGET)
+Project(#{NAME})
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.cmake)
 
-option(USE_SOLUTION_FOLDERS  ON)
+#this is a example
+add_subdirectory(Example)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_STANDARD_REQUIRED ON)
-
-set(CMAKE_MODULE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
-
-set(BINARY_DIR ${ROOT_DIR}/build/${CMAKE_BUILD_TYPE}/bin) 
-set(LIBRARY_DIR ${ROOT_DIR}/build/${CMAKE_BUILD_TYPE}/lib)
-set(INCLUDE_DIR ${ROOT_DIR}/build/${CMAKE_BUILD_TYPE}/include)
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY BINARY_DIR) 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY LIBRARY_DIR)
-
-add_subdirectory(Templates)
 #add your module
+add_subdirectory(Shared)
 
