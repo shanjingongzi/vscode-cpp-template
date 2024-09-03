@@ -40,3 +40,21 @@ function(CollectSources RESULT ALL_DIRECTORIES BASE_DIR)
     endforeach()
     set(${RESULT} ${SRCS} PARENT_SCOPE)
 endfunction()
+
+function(CollectMOCSources RESULT ALL_DIRECTORIES BASE_DIR)
+    set(SRCS "")
+    foreach(DIR  IN LISTS ALL_DIRECTORIES)
+        file(GLOB CURRENT_SOURCES
+            ${DIR}/*.rc
+            ${DIR}/*.ui
+        )
+        if(CURRENT_SOURCES)
+            list(APPEND SRCS ${CURRENT_SOURCES})
+            file(RELATIVE_PATH GROUP_NAME ${BASE_DIR} ${DIR})
+            if(GROUP_NAME)
+                source_group(${GROUP_NAME} FILES ${CURRENT_SOURCES})
+            endif()
+        endif()
+    endforeach()
+    set(${RESULT} ${SRCS} PARENT_SCOPE)
+endfunction()
